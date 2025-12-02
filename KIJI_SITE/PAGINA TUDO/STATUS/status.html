@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STATUS</title>
+    <link rel="stylesheet" href="./status.css">
+    <link rel="icon" type="image/x-icon" href="aaaaa.png">
+
+    <style>
+        
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <ul>
+            <li><img src="Imagem gerada.jpg" alt="logo"></li>
+            <li><a href="../HOME/index.html">HOME</a></li>
+            <li><a href="../PEDIDOS/pedidos.html">PEDIDOS</a></li>
+            <li><a href="../STATUS/status.html">STATUS</a></li>
+            <li><a href="../PERGUNTAS/perguntas.html">PERGUNTAS</a></li>
+            <li><a href="#sobre">SOBRE</a></li>
+        </ul>
+    </nav>
+<br>
+    <main>
+        <div class="container">
+            <!-- Aqui serão exibidos os cards com os timers -->
+        </div>
+    </main>
+    <br>
+
+    <footer>
+        <div id="sobre" class="footer-container">
+            <div class="footer-section">
+                <h4>Sobre Nós</h4>
+                <p>Somos uma empresa dedicada a fornecer soluções de alta qualidade para nossos clientes.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="../HOME/index.html">HOME</a></li>
+                    <li><a href="../PEDIDOS/pedidos.html">PEDIDOS</a></li>
+                    <li><a href="../STATUS/status.html">STATUS</a></li>
+                    <li><a href="../PERGUNTAS/perguntas.html">PERGUNTAS</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>Email: kiji@gmail.com</p>
+                <p>Telefone: (11) 1234-5678</p>
+                <p>Endereço: Rua Exemplo, 123, São Paulo, SP</p>
+            </div>
+            <div class="footer-section">
+                <h4>Siga-nos</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank">Facebook</a><br>
+                    <a href="https://www.twitter.com" target="_blank">Twitter</a><br>
+                    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 Empresa. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPT ATUALIZADO PARA REMOVER O PEDIDO -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const container = document.querySelector(".container");
+
+            // Função para carregar os pedidos do localStorage e exibir os timers
+            function carregarPedidos() {
+                let pedidos = JSON.parse(localStorage.getItem("pedidosAtivos")) || [];
+
+                if (pedidos.length === 0) {
+                    container.innerHTML = "<p>Nenhum pedido em andamento.</p>";
+                    return;
+                }
+
+                container.innerHTML = "";  // Limpa a tela para adicionar os novos pedidos
+
+                pedidos.forEach(pedido => {
+                    const card = document.createElement("div");
+                    card.classList.add("card");
+
+                    const titulo = document.createElement("h3");
+                    titulo.textContent = "Status do Pedido";
+                    card.appendChild(titulo);
+
+                    const statusBox = document.createElement("div");
+                    statusBox.classList.add("status", "longe");
+                    statusBox.textContent = "Carregando...";
+
+                    const removerButton = document.createElement("button");
+                    removerButton.classList.add("btn-remover");
+                    removerButton.textContent = "Remover";
+                    removerButton.onclick = () => removerPedido(pedido.id, card);
+
+                    card.appendChild(statusBox);
+                    card.appendChild(removerButton);
+                    container.appendChild(card);
+
+                    iniciarTimer(pedido, statusBox);
+                });
+            }
+
+            // Função para iniciar o timer de cada pedido
+            function iniciarTimer(pedido, statusBox) {
+
+                const tempoTotal = 60000;  // 1 minuto total
+                const aviso = 30000;       // aviso aos 30s
+
+                const interval = setInterval(() => {
+
+                    const agora = Date.now();
+                    const tempoPassado = agora - pedido.hora;
+                    const tempoRestante = tempoTotal - tempoPassado;
+
+                    // PEDIDO ENTREGUE
+                    if (tempoRestante <= 0) {
+                        clearInterval(interval);
+
+                        statusBox.textContent = "Pedido entregue!";
+                        statusBox.className = "status perto";
+
+                        // Remove este pedido após 5s
+                        setTimeout(() => {
+                            removerPedido(pedido.id);
+                        }, 5000);
+
+                        return;
+                    }
+
+                    // AVISO AOS 30 SEGUNDOS RESTANTES
+                    if (tempoRestante <= aviso) {
+                        statusBox.textContent = "Estamos chegando!";
+                        statusBox.className = "status perto";
+                    } else {
+                        // TIMER NORMAL
+                        const segundos = Math.floor(tempoRestante / 1000);
+                        const min = Math.floor(segundos / 60);
+                        const seg = segundos % 60;
+
+                        statusBox.textContent =
+                            `Tempo para chegada: ${min}:${seg.toString().padStart(2, "0")}`;
+
+                        statusBox.className = "status longe";
+                    }
+
+                }, 500);
+            }
+
+            // Função para remover um pedido da lista no localStorage
+            function removerPedido(id, card) {
+                let pedidos = JSON.parse(localStorage.getItem("pedidosAtivos")) || [];
+                pedidos = pedidos.filter(p => p.id !== id);
+                localStorage.setItem("pedidosAtivos", JSON.stringify(pedidos));
+
+                // Remove o card da tela
+                card.remove();
+
+                // Se não houver mais pedidos, mostra mensagem
+                if (pedidos.length === 0) {
+                    container.innerHTML = "<p>Nenhum pedido em andamento.</p>";
+                }
+            }
+
+            // Carrega os pedidos ao carregar a página
+            carregarPedidos();
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,237 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Garante que o footer fique no final da tela */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #232323; /* Cor de fundo igual ao anterior */
+}
+.image1 {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('KIJI.png');
+    background-repeat: no-repeat;
+    background-position: center center; /* Manter o centro */
+    background-size: 40%;
+    z-index: -1;
+    transform: translateY(70%); /* Ajusta a posição vertical da imagem */
+    filter: drop-shadow(0 0 20px rgb(228, 144, 59));
+}
+
+/* Navegação */
+nav {
+    background-color: #000000;
+    padding: 10px 0;
+}
+
+.navsecundaria {
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 8px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    font-family: "New Amsterdam", sans-serif;
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: #23f4e6; /* Cor do hover igual ao anterior */
+}
+
+nav ul li img {
+    width: 70px;
+    height: 70px;
+}
+
+/* Conteúdo principal */
+main {
+    flex: 1;
+    display: flex;
+    background-color: rgb(40, 40, 40); /* Alterado para combinar com o fundo do anterior */
+    font-family: "New Amsterdam", sans-serif;
+    width: 50%;
+    margin: auto;
+}
+
+/* Container de cards */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px; /* Espaçamento entre os cards */
+    justify-content: center;
+    width: 100%; /* Ajuste da largura para centralizar melhor */
+    max-width: 1200px;
+}
+
+/* Estilo dos cards */
+.card {
+    background-color: rgb(228, 144, 59); /* Laranja suave, igual ao anterior */
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px;
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+}
+
+/* Efeito ao passar o mouse */
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(180deg, rgb(240, 160, 70), rgb(200, 120, 40)); /* Degradê igual ao anterior */
+}
+
+/* Título e texto */
+.card h2 {
+    cursor: pointer;
+    background-color: rgb(239, 146, 53); /* Amarelo igual ao anterior */
+    padding: 15px;
+    border: 1px solid rgba(0, 0, 0, 0.78);
+    margin: 0;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.card h2:hover {
+    background-color: rgba(255, 233, 37, 0.78); /* Amarelo suave no hover */
+}
+
+/* Inicialmente oculta as respostas */
+.resposta {
+    display: none;
+    padding: 10px;
+    background-color: #fff387c7; /* Amarelo suave para as respostas */
+    border-top: 1px solid #fff387c7;
+    margin-top: 10px;
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+    max-height: 0;
+}
+
+/* Estilo para o card expandido */
+.card.ativo .resposta {
+    display: block;
+    max-height: 200px;
+}
+
+/* Efeito de transição para a resposta */
+.card .resposta {
+    transition: max-height 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Espaçamento do footer */
+footer {
+    background-color: rgb(38, 48, 49); /* Fundo do footer igual ao anterior */
+    color: white;
+    padding: 10px 0;
+    font-family: Arial, sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-section {
+    flex-basis: 23%;
+    margin-bottom: 20px;
+}
+
+.footer-section h4 {
+    margin-bottom: 15px;
+    font-size: 24px;
+    color: rgb(228, 144, 59); /* Amarelo igual ao anterior */
+    font-family: "New Amsterdam", sans-serif;
+}
+
+.footer-section p,
+.footer-section ul {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.footer-section ul {
+    list-style-type: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+    color: #23f4e6; /* Cor do hover no footer */
+}
+
+.social-links a {
+    display: inline-block;
+    margin-right: 10px;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #23f4e6; /* Cor do hover nas redes sociais */
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px 0;
+    border-top: 1px solid #e0dfdf;
+    font-size: 14px;
+}
+
+button {
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+}

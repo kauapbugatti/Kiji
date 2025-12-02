@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEDIDOS</title>
+    <link rel="stylesheet" href="./pedidos.css">
+    <link rel="icon" type="image/x-icon" href="aaaaa.png">
+</head>
+
+<body>
+
+
+    <nav>
+        <ul>
+            <li><img src="Imagem gerada.jpg" alt="logo"></li>
+            <li><a href="../HOME/index.html">HOME</a></li>
+            <li><a href="../PEDIDOS/pedidos.html">PEDIDOS</a></li>
+            <li><a href="../STATUS/status.html">STATUS</a></li>
+            <li><a href="../PERGUNTAS/perguntas.html">PERGUNTAS</a></li>
+            <li><a href="#sobre">SOBRE</a></li>
+        </ul>
+    </nav>
+ <br>
+    <main>
+        <div class="flex">
+            <h2>Itens do Carrinho</h2>
+
+            <!-- Aqui serão listados os itens do carrinho -->
+            <div id="itensCarrinho"></div>
+
+            <!-- Total -->
+            <div id="totalCarrinho"></div>
+
+            <!-- Botão para finalizar a compra -->
+            <button onclick="finalizarCompra()">Comprar</button>
+        </div>
+    </main>
+<br>
+    <footer>
+        <div id="sobre" class="footer-container">
+            <div class="footer-section">
+                <h4>Sobre Nós</h4>
+                <p>Somos uma empresa dedicada a fornecer soluções de alta qualidade para nossos clientes.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="../HOME/index.html">HOME</a></li>
+                    <li><a href="../PEDIDOS/pedidos.html">PEDIDOS</a></li>
+                    <li><a href="../STATUS/status.html">STATUS</a></li>
+                    <li><a href="../PERGUNTAS/perguntas.html">PERGUNTAS</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>Email: kiji@gmail.com</p>
+                <p>Telefone: (11) 1234-5678</p>
+                <p>Endereço: Rua Exemplo, 123, São Paulo, SP</p>
+            </div>
+            <div class="footer-section">
+                <h4>Siga-nos</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank">Facebook</a><br>
+                    <a href="https://www.twitter.com" target="_blank">Twitter</a><br>
+                    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Empresa. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="pedidos.js"></script>
+</body>
+
+</html>
+
+
+
+    <!-- SCRIPT atualizado e funcionando com o timer -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+            const carrinhoDiv = document.getElementById("itensCarrinho");
+            const totalDiv = document.getElementById("totalCarrinho");
+
+            function atualizarTela() {
+                carrinhoDiv.innerHTML = "";
+                let total = 0;
+
+                carrinho.forEach((item, index) => {
+                    const div = document.createElement("div");
+                    div.classList.add("itemCarrinho");
+
+                    div.innerHTML = `
+                        <div>
+                            <h3>${item.nome}</h3>
+                            <p>Preço: R$ ${item.preco.toFixed(2)}</p>
+                        </div>
+
+                        <button class="btn-remover" onclick="removerItem(${index})">Remover</button>
+                    `;
+
+                    carrinhoDiv.appendChild(div);
+                    total += item.preco;
+                });
+
+                totalDiv.innerHTML = `Total: R$ ${total.toFixed(2)}`;
+            }
+
+            atualizarTela();
+
+            window.removerItem = (index) => {
+                carrinho.splice(index, 1);
+                localStorage.setItem("carrinho", JSON.stringify(carrinho));
+                atualizarTela();
+            };
+        });
+
+        // Finalizar compra com integração ao STATUS
+        function finalizarCompra() {
+
+            let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+            if (carrinho.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+
+            alert("Compra finalizada com sucesso!");
+
+            // Salva dados do pedido para o timer do status.html
+            localStorage.setItem("pedidoRealizado", "true");
+            localStorage.setItem("pedidoHora", Date.now());
+
+            // Limpa o carrinho
+            localStorage.removeItem("carrinho");
+
+            // Redireciona para status
+            window.location.href = "../STATUS/status.html";
+        }
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PEDIDOS</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="icon" type="image/x-icon" href="aaaaa.png">
+</head>
+<body>
+    <div class="image1"></div>
+    <nav class="header">
+        <ul >
+            <li><img src="Imagem gerada.jpg" alt="logo"></li>
+            <li ><a href="../HOME/index.html">HOME</a></li>
+            <li><a href="../PEDIDOS/pedidos.html">PEDIDOS</a></li>
+            <li><a href="../STATUS/status.html">STATUS</a></li>
+            <li><a href="../PERGUNTAS/perguntas.html">PERGUNTAS</a></li>
+            <li><a href="#sobre">SOBRE</a></li>
+        </ul>
+    </nav>
+
+    <!-- Botões de categorias -->
+    <div class="container botoes">
+        <div class="card" onclick="mostrarSecao('lanches')"><button onclick="mostrarSecao('lanches')">LANCHES</button></div>
+        <div class="card" onclick="mostrarSecao('pizzas')"><button onclick="mostrarSecao('pizzas')">PIZZA</button></div>
+        <div class="card" onclick="mostrarSecao('porcoes')"><button onclick="mostrarSecao('porcoes')">PORÇÕES</button></div>
+        <div class="card" onclick="mostrarSecao('pratos')"><button onclick="mostrarSecao('pratos')">PRATO FEITO</button></div>
+        <div class="card" onclick="mostrarSecao('sobremesas')"><button onclick="mostrarSecao('sobremesas')">SOBREMESAS</button></div>
+    </div>
+    
+    <main>
+        <div class="conteudo ativo" id="lanches">
+            <div class="container">
+                <!-- Card 1 -->
+            <div class="card" onclick="adicionarAoCarrinho('X - O Mãe', 115.00)">
+                <img src="lanche1.png" alt="OMÃE">
+                <h2>X-O MÃE</h2>
+                <p>Pão brioche macio, hambúrguer artesanal de 180g, queijo cheddar cremoso, alface fresca, tomate suculento e cebola roxa crocante.</p>
+                <h2 class="preco">R$115,00</h2>
+            </div>
+
+            <div class="card" onclick="adicionarAoCarrinho('X - JP', 120.00)">
+                <img src="lanche2.png" alt="JP">
+                <h2>X-JP</h2>
+                <p>Pão brioche macio, hambúrguer artesanal de 180g, fatias generosas de bacon crocante, queijo cheddar derretido, alface fresca, tomate suculento e maionese especial da casa.</p>
+                <h2 class="preco">R$120,00</h2>
+            </div>
+            <!-- Card 3 -->
+            <div class="card" onclick="adicionarAoCarrinho('X - BURGATI', 150.00)">
+                <img src="lanche3.png" alt="Burgati">
+                <h2>X- BURGATI</h2>
+                <p>Pão brioche macio, filé de frango crispy dourado, requeijão cremoso, tomate fresco e alface crocante.</p>
+                <h2 class="preco">R$150,00</h2>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="card" onclick="adicionarAoCarrinho('X - PEPETELO', 170.00)">
+                <img src="lanche4.png" alt="Pepetelo">
+                <h2>X-PEPETELO</h2>
+                <p>Pão brioche macio, calabresa grelhada, blend artesanal e uma explosão de sabor com três queijos derretidos.</p>
+                <h2 class="preco">R$170,00</h2>
+            </div>
+            </div>
+        </div>
+
+        <div class="conteudo" id="pizzas">
+            <div class="container">
+                <div class="card" onclick="adicionarAoCarrinho('Pizza Calabresa', 100.00)">
+                    <img src="Calabresa.jpg" alt="Pizza calabresa">
+                    <h2>Pizza Calabresa</h2>
+                    <p>Massa crocante de fermentação natural com calabresa selecionada, cebola fina e toque especial de orégano, trazendo sabor marcante e tradicional.</p>
+                    <h2 class="preco">R$100,00</h2>
+                </div>
+                <div class="card" onclick="adicionarAoCarrinho('Pizza 4 Queijos', 115.00)">
+                    <img src="4queijo.jpg" alt="Pizza 4 queijos">
+                    <h2>Pizza 4 Queijos</h2>
+                    <p>Combinação cremosa de queijos selecionados, com equilíbrio perfeito entre intensidade e suavidade, garantindo uma experiência irresistível em cada mordida.</p>
+                    <h2 class="preco">R$115,00</h2>
+                </div>
+                    <div class="card" onclick="adicionarAoCarrinho('Pizza Portuguesa', 100.00)">
+                    <img src="PizzaPortuguesa.png" alt="Pizza portuguesa">
+                    <h2>Pizza portuguesa</h2>
+                    <p>Massa leve de fermentação natural, coberta com molho artesanal, presunto selecionado, ovos, cebola e azeitonas, criando um sabor clássico e marcante em cada fatia.</p>
+                    <h2 class="preco">R$100,00</h2>
+                </div>
+                <div class="card" onclick="adicionarAoCarrinho('Pizza de frango', 90.00)">
+                    <img src="PizzaDeFrango.png" alt="Pizza de frango">
+                    <h2>Pizza de frango</h2>
+                    <p>Frango desfiado temperado com especiarias, molho artesanal e cebola roxa levemente caramelizada, trazendo equilíbrio perfeito entre sabor e aroma.</p>
+                    <h2 class="preco">R$90,00</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="conteudo" id="porcoes">
+             <div class="container">
+                <div class="card" onclick="adicionarAoCarrinho('Porção de Nuggets', 50.00)">
+                    <img src="Nuggets.jpg" alt="Nuggets">
+                    <h2>Porção de Nuggets</h2>
+                    <p>Mini filés empanados com textura crocante por fora e macios por dentro, servidos com sabor caseiro e irresistível.</p>
+                    <h2 class="preco">R$50,00</h2>
+                </div>
+                <div class="card" onclick="adicionarAoCarrinho('Porção de batatas fritas', 150.00)">
+                    <img src="Batata.jpg" alt="Batata">
+                    <h2>Porção de batata Frita</h2>
+                    <p>Batatas douradas e crocantes, temperadas na medida certa e servidas com apresentação impecável para acompanhar qualquer prato.</p>
+                    <h2 class="preco">R$70,00</h2>
+                </div>
+                    <div class="card" onclick="adicionarAoCarrinho('Porção de peixe', 70.00)">
+                    <img src="PorcaoDePeixe.png" alt="Porção de peixe">
+                    <h2>Porção de peixe</h2>
+                    <p>Filezinhos de tilápia empanados com crocância impecável, servidos com tempero especial e sabor leve que combina com qualquer ocasião.</p>
+                    <h2 class="preco">R$70,00</h2>
+                </div>
+                <div class="card" onclick="adicionarAoCarrinho('Sushi', 70.00)">
+                    <img src="Sushi.jpg" alt="Sushi">
+                    <h2>Sushi</h2>
+                    <p>Peças preparadas com cortes frescos, arroz temperado na medida certa e apresentação refinada, valorizando a delicadeza da culinária oriental.</p>
+                    <h2 class="preco">R$70,00</h2>
+                </div>
+            </div>
+        </div>
+        
+        <div class="conteudo" id="pratos">
+            <div class="container">
+                <div class="card" onclick="adicionarAoCarrinho('Strogonoff de carne', 50.00)">
+                    <img src="Strogonoff.jpg" alt="Strogonoff">
+                    <h2>Strogonoff de carne</h2>
+                    <p>Tirinhas de carne selecionada salteadas e finalizadas com molho cremoso e sofisticado, servidas com arroz soltinho e batata palha crocante.</p>
+                    <h2 class="preco">R$50,00</h2>
+                </div>
+                <div class="card" onclick="adicionarAoCarrinho('Feijoada', 40.00)">
+                    <img src="Fejoada.jpg" alt="Fejoada">
+                    <h2>Feijoada completa </h2>
+                    <p>Feijão preto cozido lentamente com carnes selecionadas, tempero caseiro e sabor profundo, servida com acompanhamentos tradicionais que completam a experiência.</p>
+                    <h2 class="preco">R$40,00</h2>
+                </div>
+                    <div class="card" onclick="adicionarAoCarrinho('Carne a parmegiana', 80.00)">
+                    <img src="Parmegiana.jpg" alt="Carne a parmegiana">
+                    <h2>Carne a parmegiana</h2>
+                    <p>Filé empanado crocante, coberto com molho de tomate fresco e queijo gratinado, acompanhado de batatas fritas, servido com acompanhamentos que garantem uma experiência completa e marcante.</p>
+                    <h2 class="preco">R$80,00</h2>
+                </div>
+                <div class="card" onclick="adicionarAoCarrinho('Prato de biffe', 60.00)">
+                    <img src="Biffe.jpg" alt="Prato de biffe">
+                    <h2>Prato de biffe</h2>
+                    <p>Bife suculento preparado no ponto perfeito, acompanhado de arroz, feijão e guarnições selecionadas que transformam o clássico PF em uma refeição sofisticada.</p>
+                    <h2 class="preco">R$60,00</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="conteudo" id="sobremesas">
+            <div class="container">
+                <div class="card" onclick="adicionarAoCarrinho('Sorvete (2 bolas)', 40.00)">
+                    <img src="sorvete.jpg" alt="sorvete">
+                    <h2>Sorvete (2 bolas)</h2>
+                    <p>Duas bolas de sorvete cremoso em sabores clássicos, servidas com apresentação delicada e sabor que remete à verdadeira confeitaria artesanal.</p>
+                    <h2 class="preco">R$40,00</h2>
+                </div>
+                <div class="card" onclick="adicionarAoCarrinho('Petit gateau', 60.00)">
+                    <img src="Petigato.png" alt="Petit gateau">
+                    <h2>Petit gateau</h2>
+                    <p>Bolo macio com interior cremoso de chocolate, servido quentinho acompanhado de sorvete em contraste perfeito de sabor e temperatura.</p>
+                    <h2 class="preco">R$60,00</h2>
+                </div>
+                    <div class="card" onclick="adicionarAoCarrinho('Musse de maracujá', 30.00)">
+                    <img src="MusseMaracuja.jpg" alt="Musse">
+                    <h2>Musse de maracujá</h2>
+                    <p>Creme leve e sedoso de maracujá, servido em taça com sabor tropical marcante e apresentação digna de confeitaria fina.</p>
+                    <h2 class="preco">R$30,00</h2>
+                </div>
+                <div class="card" onclick="adicionarAoCarrinho('Torta de limão', 30.00)">
+                    <img src="TortaDeLimão.png" alt="Torta de limão">
+                    <h2>Torta de limão</h2>
+                    <p>Base amanteigada com creme de limão aerado e equilíbrio perfeito entre acidez e doçura, finalizada com cobertura delicada e apresentação elegante.</p>
+                    <h2 class="preco">R$30,00</h2>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div id="sobre" class="footer-container">
+            <div class="footer-section">
+                <h4>Sobre Nós</h4>
+                <p>Somos uma empresa dedicada a fornecer soluções de alta qualidade para nossos clientes.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="../HOME/index.html">HOME</a></li>
+                    <li><a href="../PEDIDOS/pedidos.html">PEDIDOS</a></li>
+                    <li><a href="../STATUS/status.html">STATUS</a></li>
+                    <li><a href="../PERGUNTAS/perguntas.html">PERGUNTAS</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contato</h4>
+                <p>Email: kiji@gmail.com</p>
+                <p>Telefone: (11) 1234-5678</p>
+                <p>Endereço: Rua Exemplo, 123, São Paulo, SP</p>
+            </div>
+            <div class="footer-section">
+                <h4>Siga-nos</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com" target="_blank">Facebook</a><br>
+                    <a href="https://www.twitter.com" target="_blank">Twitter</a><br>
+                    <a href="https://www.instagram.com" target="_blank">Instagram</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Empresa. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
